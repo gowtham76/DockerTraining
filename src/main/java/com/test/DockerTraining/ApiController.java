@@ -11,6 +11,6 @@ public class ApiController {
     @GetMapping("/hello")
     public String test()
     {
-        return "Hi Gowtham here";
+        return "Hi Gowtham here from socgen";
     }
 }

@@ -21,9 +21,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # Build with Maven
-      - name: Build project
-        run: mvn clean package -DskipTests
+      # Build + Sonar Scan ✅ (UPDATED STEP)
+      - name: Build and Sonar Scan
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=gowtham76_report-service \
+            -Dsonar.organization=gowtham76 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
       # Build Docker image
       - name: Build Docker image
